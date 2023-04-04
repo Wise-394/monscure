@@ -37,4 +37,11 @@ public class bulletShootMovement : MonoBehaviour
             
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer != 3 && collision.gameObject.layer != 8 && collision.gameObject.layer != 9) 
+        {
+            Destroy(gameObject);
+        }
+    }
 }
