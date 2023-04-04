@@ -95,11 +95,13 @@ public class ShootScript : MonoBehaviour
     }
     public void RifleShoot() 
     {
-        if (canShoot && Input.GetMouseButton(0))
+        if (canShoot && Input.GetMouseButton(0) && variables.ammo > 0 )
         {
             Instantiate(bullet, transform.position, transform.rotation);
             canShoot = false;
             timer = 0;
+            variables.ammo--;
+            Debug.Log(variables.ammo);
         }
 
         if (!canShoot)

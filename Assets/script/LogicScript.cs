@@ -6,6 +6,7 @@ public class LogicScript : MonoBehaviour
 {
     public GlobalVariables variables;
     private float elixirToAdd;
+    public GameObject elixir;
 
     public void addElixir() 
     {
@@ -22,7 +23,25 @@ public class LogicScript : MonoBehaviour
         }
         else if (variables.elixir < 1000 && variables.canUseRifle == false)
         {
-            Debug.Log("not enough");
+           
         }
+    }
+    public void onClickAmmo() 
+    {
+        if(variables.elixir > 300 && variables.canUseRifle == true) 
+        {
+            Debug.Log("bought ammo");
+            variables.ammo += 30;
+        }
+    }
+    public void dropElixir(Vector2 position,Quaternion rotation) 
+    {
+        Instantiate(elixir,position,rotation );
+    }
+
+    public float onHitEnemy(float hp) 
+    {
+        hp -= variables.bulletDmg;
+        return hp;
     }
 }
