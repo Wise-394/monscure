@@ -7,7 +7,7 @@ public class ShootScript : MonoBehaviour
     public GlobalVariables variables;
     public GameObject bullet;
     public int gunState = 1;
-  
+    public PlayerMovement playerMovement;
     public float timer = 0;
     private bool canShoot = true;
 
@@ -18,6 +18,7 @@ public class ShootScript : MonoBehaviour
     public Sprite rifle;
     public float pistolFireRate;
     public float rifleFireRate;
+    private bool isShooting;
     // 1 = pistol, 2 = shotgun, 3 = rifle
 
     void Start()
@@ -73,17 +74,35 @@ public class ShootScript : MonoBehaviour
             weapon.sprite = rifle;
             RifleShoot();
         }
+        if (!Input.GetMouseButton(0)) 
+        {
+            isShooting = false;
+        }
+        if (isShooting == false)
+        {
+            playerMovement.moveSpeed = 4;
+        }
+
     }
     public void PistolShoot()
     {
         if (canShoot && Input.GetMouseButton(0))
         {
             Instantiate(bullet, transform.position, transform.rotation);
+           
+            Debug.Log(isShooting);
             canShoot = false;
             timer = 0;
         }
-
-        if (!canShoot)
+        if (Input.GetMouseButton(0))
+        {
+            isShooting = true;
+            playerMovement.moveSpeed = 2;
+        }
+        if (!Input.GetMouseButton(0))
+        {
+            playerMovement.moveSpeed = 4;
+        }
         {
             timer += Time.deltaTime;
             if (timer >= pistolFireRate)
@@ -98,11 +117,14 @@ public class ShootScript : MonoBehaviour
         if (canShoot && Input.GetMouseButton(0) && variables.ammo > 0 )
         {
             Instantiate(bullet, transform.position, transform.rotation);
+            isShooting = true;
+            playerMovement.moveSpeed = 1;
             canShoot = false;
             timer = 0;
             variables.ammo--;
             Debug.Log(variables.ammo);
         }
+      
 
         if (!canShoot)
         {

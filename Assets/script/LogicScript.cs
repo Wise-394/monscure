@@ -30,7 +30,7 @@ public class LogicScript : MonoBehaviour
     {
         if(variables.elixir > 300 && variables.canUseRifle == true) 
         {
-            Debug.Log("bought ammo");
+          
             variables.ammo += 30;
         }
     }

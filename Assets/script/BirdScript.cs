@@ -29,6 +29,8 @@ public class BirdScript : MonoBehaviour
     private bool canShoot;
     private float timer;
     public Transform firePoint;
+    public float birdFollowTimer;
+    private bool stopFollowingPlayerTimer = false;
 
     private void Awake()
     {
@@ -87,7 +89,16 @@ public class BirdScript : MonoBehaviour
 
             }
         }
-        Debug.Log(distance);
+        if(stopFollowingPlayerTimer == true) 
+        {
+            
+            birdFollowTimer -= Time.deltaTime;
+            if(birdFollowTimer <= 0) 
+            {
+                canAttackPlayer = false;
+            }
+        }
+        
     }
     private void FixedUpdate()
     {      
@@ -102,6 +113,15 @@ public class BirdScript : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             canAttackPlayer = true;
+            stopFollowingPlayerTimer = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 8) 
+        {
+            stopFollowingPlayerTimer = true;
+            birdFollowTimer = 3;
         }
     }
     public void birdMovement() 

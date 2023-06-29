@@ -1080,7 +1080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827129043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 0.34, z: 0}
+  m_LocalPosition: {x: 7.4, y: -4.09, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1285,6 +1285,7 @@ MonoBehaviour:
   variables: {fileID: 994065596}
   bullet: {fileID: 1812295905781614915, guid: 834b2f7ecf8250e4f8d7d8d3c87a4fd5, type: 3}
   gunState: 1
+  playerMovement: {fileID: 1601437568}
   timer: 0
   weapon: {fileID: 1254938960}
   pistol: {fileID: 21300000, guid: 15b2a4fbc2d12514888a02f0ccc7bfb1, type: 3}
@@ -1524,7 +1525,7 @@ Transform:
   m_GameObject: {fileID: 1398848411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.04, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1601437566}
@@ -2064,13 +2065,14 @@ MonoBehaviour:
   bulletPreFab: {fileID: 3129650559512773044, guid: da7f738d8c9f88642b29298d9aa8ac95, type: 3}
   fireDirection: {fileID: 0}
   bulletSPD: 0
-  shootDistance: 4
+  shootDistance: 2
   distance: 0
   checkdistance: 0
   moveSpeed: 2
-  attackSPD: 0.4
+  attackSPD: 0.6
   birdVision: 1
   firePoint: {fileID: 389704015}
+  birdFollowTimer: 3
 --- !u!50 &1827204121
 Rigidbody2D:
   serializedVersion: 4

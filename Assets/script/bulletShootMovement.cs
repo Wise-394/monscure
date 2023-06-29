@@ -27,7 +27,7 @@ public class bulletShootMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rb.AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce(transform.right * bulletSpeed * Time.deltaTime, ForceMode2D.Impulse);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
